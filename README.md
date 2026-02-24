@@ -238,7 +238,7 @@ This is a personal portfolio project, but suggestions are welcome:
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT License : see [LICENSE](LICENSE) for details.
 
 If used in academic work, please cite:
 ```
