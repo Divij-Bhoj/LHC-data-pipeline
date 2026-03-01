@@ -1,8 +1,26 @@
 # LHC Data Streaming & Monitoring Pipeline
 
-A real-time data streaming pipeline inspired by CERN's LHC data acquisition infrastructure. I built this to teach myself how detector data actually flows from readout to analysis from event generation all the way through streaming, triggering, and live monitoring.
+![CI Status](https://github.com/Divij-Bhoj/LHC-data-pipeline/actions/workflows/ci.yml/badge.svg)
+![License](https://img.shields.io/github/license/Divij-Bhoj/LHC-data-pipeline)
+![C++](https://img.shields.io/badge/C++-17-blue)
+
+A real-time data streaming pipeline inspired by CERN's LHC data acquisition infrastructure. I built this to teach myself how detector data actually flows from readout to analysis—from event generation all the way through streaming, triggering, and live monitoring.
+
+---
+
+## 🗺️ Project Roadmap
+
+- [x] **Phase 1**: Core C++ Event Generator & Kafka Producer.
+- [x] **Phase 2**: Python-based Trigger Engine & SQLite Storage.
+- [x] **Phase 3**: Real-time Dashboard with Chart.js visualization.
+- [x] **Phase 4**: CI/CD Integration and Physics Validation (Z-mass peak).
+- [ ] **Phase 5**: Scalability testing with Kubernetes (K8s) deployment.
+- [ ] **Phase 6**: Integrating secondary AI-based anomaly detection (see [QuarkStream](https://github.com/Divij-Bhoj/QuarkStream)).
+
+---
 
 The pipeline simulates proton-proton collision events in C++, streams them through Apache Kafka, applies physics trigger logic (similar to ATLAS/CMS HLT paths), stores results in SQLite, and visualizes everything on a live dashboard.
+
 
 **Technologies:** C++17 · Apache Kafka · Python · SQLite · JavaScript · Chart.js · Flask · Docker
 

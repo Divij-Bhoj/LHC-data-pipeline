@@ -85,6 +85,9 @@ struct Event {
 
     // serialize to a single JSON line for piping to the producer
     std::string to_json() const;
+
+    // print a human-readable summary to stderr (for verbose mode)
+    void print_summary() const;
 };
 
 // Generates random collision events with configurable conditions.

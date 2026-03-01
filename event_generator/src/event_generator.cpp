@@ -364,4 +364,19 @@ std::string Event::to_json() const {
     return j.dump();
 }
 
+void Event::print_summary() const {
+    std::fprintf(stderr, "\n[Event %lu] type=%s, particles=%d, met=%.1f, sumEt=%.1f\n",
+                event_id, event_type.c_str(), num_particles, met, sum_et);
+    std::fprintf(stderr, "-------+-------+-------+-------+-------+-------+-------\n");
+    std::fprintf(stderr, " %-5s | %-5s | %-6s | %-6s | %-6s | %-6s | %-3s\n", 
+                "ID", "pT", "eta", "phi", "E", "mass", "Iso");
+    std::fprintf(stderr, "-------+-------+-------+-------+-------+-------+-------\n");
+    
+    for (const auto& p : particles) {
+        std::fprintf(stderr, " %-5d | %-5.1f | %-6.2f | %-6.2f | %-6.1f | %-6.3f | %-3s\n",
+                    p.pdg_id, p.pt, p.eta, p.phi, p.energy, p.mass, (p.is_isolated ? "Y" : "N"));
+    }
+    std::fprintf(stderr, "-------+-------+-------+-------+-------+-------+-------\n");
+}
+
 } // namespace lhc

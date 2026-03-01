@@ -48,6 +48,7 @@ int main(int argc, char* argv[]) {
     int      delay_ms    = 0;
     double   target_rate = 0;
     int      pileup      = 25;
+    bool     verbose     = false;
 
     // quick and dirty arg parsing — works fine for a tool like this
     for (int i = 1; i < argc; ++i) {
@@ -58,6 +59,7 @@ int main(int argc, char* argv[]) {
         else if (arg == "-d"       && i+1 < argc) delay_ms    = std::stoi(argv[++i]);
         else if (arg == "--rate"   && i+1 < argc) target_rate = std::stod(argv[++i]);
         else if (arg == "--pileup" && i+1 < argc) pileup      = std::stoi(argv[++i]);
+        else if (arg == "--verbose")              verbose     = true;
         else if (arg == "-h" || arg == "--help") { print_usage(argv[0]); return 0; }
         else { std::cerr << "Unknown option: " << arg << "\n"; print_usage(argv[0]); return 1; }
     }
@@ -86,7 +88,12 @@ int main(int argc, char* argv[]) {
 
     while (g_running && (num_events == 0 || count < num_events)) {
         auto event = gen.generate();
-        std::cout << event.to_json() << '\n';
+        std::cout << event.to_json() << std::endl;  // flushing ensures better pipe behavior
+        
+        if (verbose) {
+            event.print_summary();
+        }
+        
         ++count;
 
         if (delay_ms > 0) {
